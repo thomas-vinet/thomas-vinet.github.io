@@ -1,38 +1,36 @@
-name: CI
-
+name: Webpage deployment
 on:
   push:
 
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: 'pages'
+  cancel-in-progress: true
 
 jobs:
-  serve:
+  deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v5
-      - uses: oven-sh/setup-bun@v2
-      - run: bun install --frozen-lockfile
-      - run: bun run build-only
-      - run: cp dist/index.html dist/404.html
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          node-version: latest
+      - name: Install dependencies
+        run: bun install
+      - name: Build
+        run: bun run build-only
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          path: "./dist"
+          path: './dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
