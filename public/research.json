@@ -1,0 +1,18 @@
+[
+  {
+    "type": "preprint",
+    "file": "hyrql",
+    "authors": "Kostia Chardonnet, Emmanuel Hainry, Romain Péchoux, Thomas Vinet",
+    "date": "23/10/2025",
+    "title": "Resource-Aware Hybrid Quantum Programming with General Recursion and Quantum Control"
+  },
+  {
+    "type": "workshop",
+    "file": "qpl25",
+    "authors": "Kostia Chardonnet, Emmanuel Hainry, Romain Péchoux, Thomas Vinet",
+    "title": "A hybrid and reversible quantum language",
+    "location": "Quantum Physics and Logic (QPL 2025)",
+    "date": "2025",
+    "additional": "poster"
+  }
+]

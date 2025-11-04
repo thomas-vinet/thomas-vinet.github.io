@@ -8,9 +8,7 @@
       under the supervision of <elink href="members.loria.fr/EHainry/" content="Emmanuel Hainry"/>
       and <elink href="https://members.loria.fr/RPechoux/" content="Romain Péchoux"/>.
       My PhD, which I started on 01/10/2024, is on the following topic:
-      <span class="italic underline">
-        Quantum Programming Language for Polynomial-Size Circuits
-      </span>.
+      <span class="italic underline"> Quantum Programming Language for Polynomial-Size Circuits</span>.
     </span>
     <div class="p-3"/>
     <span>

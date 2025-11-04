@@ -7,11 +7,15 @@ import MiscView from '../views/Misc.vue'
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
 	routes: [
-    { path: '/', component: HomeView },
-    { path: '/research', component: ResearchView },
-    { path: '/teaching', component: TeachingView },
-    { path: '/misc', component: MiscView }
+    { path: '/', component: HomeView, name : "Home"},
+    { path: '/research', component: ResearchView, name: "Research" },
+    { path: '/teaching', component: TeachingView, name: "Teaching"},
+    { path: '/misc', component: MiscView, name: "Miscellaneous"}
   ],
 });
 
+router.beforeEach((to, from, next) => {
+  document.title = to.name + " | Thomas Vinet"
+  next();
+});
 export default router;

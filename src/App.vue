@@ -1,23 +1,31 @@
 <script setup>
   import { ref, computed } from 'vue';
+  import router from './router';
   function setTheme(cmptd) {
     document.querySelector("html").setAttribute("data-theme", cmptd.value);
   }
 
-  let theme = ref(localStorage.getItem("theme") ?? "halloween");
-  //setTheme(theme);
+  let theme = ref(localStorage.getItem("theme") ?? "dracula");
+  setTheme(theme);
 
   const darkMode = computed(() => {
-    const dark = theme.value == "halloween" ? "moon" : "sun";
+    const dark = theme.value == "dracula" ? "moon" : "sun";
     return `fa-solid fa-${dark}`;
   })
 
   function toggleDarkMode() {
-    theme.value = (theme.value == "halloween") ? "caramellatte" : "halloween";
+    theme.value = (theme.value == "dracula") ? "caramellatte" : "dracula";
     localStorage.setItem("theme", theme.value);
     setTheme(theme)
   }
   
+  function routeStyle(name) {
+    const selected = router.currentRoute.value.path.substring(1);
+    const additional = selected == name ? 
+      "text-primary bg-base-100"
+      : "";
+    return "py-2 hover:text-primary/75 " + additional;
+  }
 </script>
 
 <template>
@@ -32,31 +40,31 @@
       <label for="app-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
       <div class="flex menu bg-base-200 min-h-full w-70 p-6">
         <img src="/profile.png" class="w-5/8 place-self-center"/>
-        <span class="text-3xl pb-3 pt-5 font-bold text-primary"> Thomas VINET </span>
+        <span class="text-3xl pb-3 pt-5 font-bold"> Thomas VINET </span>
         <span class="italic">PhD Student</span>
         <span class="italic pb-3">Mocqua, INRIA Nancy</span>
         <hr class="pb-3">
         <ul>
           <li>
-            <RouterLink class="py-2 hover:text-primary" to="/">
+          <RouterLink :class="routeStyle('')" to="/">
               <font-awesome-icon size="lg" icon="fa-solid fa-home"/>
               <span class="pl-2 text-lg">Home</span>
             </RouterLink>
           </li>
           <li>
-            <RouterLink class="py-2 hover:text-primary" to="/research">
+            <RouterLink :class="routeStyle('research')" to="/research">
               <font-awesome-icon size="lg" icon="fa-solid fa-newspaper"/>
               <span class="pl-2 text-lg">Research</span>
             </RouterLink>
           </li>
           <li>
-            <RouterLink class="py-2 hover:text-primary" to="/teaching">
+            <RouterLink :class="routeStyle('teaching')" to="/teaching">
               <font-awesome-icon size="lg" icon="fa-solid fa-pen-nib"/>
               <span class="pl-2 text-lg">Teaching</span>
             </RouterLink>
           </li>
           <li>
-            <RouterLink class="py-2 hover:text-primary" to="/misc">
+            <RouterLink :class="routeStyle('misc')" to="/misc">
               <font-awesome-icon size="lg" icon="fa-solid fa-flask"/>
               <span class="pl-2 text-lg">Miscellaneous</span>
             </RouterLink>
