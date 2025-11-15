@@ -15,7 +15,7 @@
        Before that, I graduated from Telecom Paris in 2024, by doing 
        my master's internship at <elink href="https://perimeterinstitute.ca/" content="Perimeter Institute"/> in Waterloo, Canada 
        under the supervision of <elink href="https://mila.quebec/en/directory/hler-kristjansson" content="Hlér Kristjánsson"/>. 
-       You can find my Master's Thesis <elink href="" content="here"/>.
+       You can find my Master's Thesis <elink href="/pdfs/master-thesis.pdf" content="here"/>.
     </span>
     <div class="p-3"/>
     <span>
